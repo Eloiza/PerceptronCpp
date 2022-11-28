@@ -1,7 +1,10 @@
 #include "Perceptron.hpp"
+#include "btb_cell.hpp"
 #include <array>
 #include <iostream>
 
+#define BTB_ROW 1024
+#define BTB_COL 4
 
 //hash the branch address 
 //fetch the perceptron
@@ -12,6 +15,14 @@
 //best threhsold 
 
 int main(){
+    std::array<std::array<BtbCell *, BTB_COL>, BTB_ROW> btb_table;
+
+    for (int i = 0; i < BTB_ROW; i++){
+        for (int j = 0; j < BTB_COL; j++){
+            btb_table[i][j] = new BtbCell();
+        }
+    }
+
     Perceptron p = Perceptron();    
     std::cout << "Vetor de Pesos" << std::endl;
     p.printWeights();
