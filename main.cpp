@@ -2,6 +2,15 @@
 #include <array>
 #include <iostream>
 
+
+//hash the branch address 
+//fetch the perceptron
+//calculate y -> make a prediction 
+// resolve the branch and check the result
+// if different train 
+
+//best threhsold 
+
 int main(){
     Perceptron p = Perceptron();    
     std::cout << "Vetor de Pesos" << std::endl;

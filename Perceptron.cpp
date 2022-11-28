@@ -1,17 +1,24 @@
 #include "Perceptron.hpp"
 
-/*Given an input x train perceptron weights*/
+/*Given an input x update perceptron weights*/
 void Perceptron::fit(std::array<int, INPUT_SIZE> x, short int y, short int label){
     unsigned int i; 
-    if(y != label || std::abs(y) < theta){
-        // calculate dot product
+    if(y != label || std::abs(y) < threshold){
         for(i =0; i<INPUT_SIZE; i++){
-            this->weights[i] = (this->weights[i] + label) * x[i];
+            this->weights[i] = (this->weights[i + 1] + label) * x[i];
         }
     }
 }
 
-std::array<int, INPUT_SIZE> Perceptron::getWeights(){
+short Perceptron::predict(std::array<int, INPUT_SIZE> x){
+    short y = this->weights[0]; //add bias    
+    for(short i=0; i< INPUT_SIZE; i++){
+        y += this->weights[i + 1]*x[i];
+    }
+    return y;
+}
+
+std::array<int, WEIGHT_SIZE> Perceptron::getWeights(){
     return this->weights;
 };
 
