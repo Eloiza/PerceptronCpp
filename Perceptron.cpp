@@ -6,19 +6,23 @@ bool Perceptron::sameSign(short x, short y){
 } 
 
 /*Given an input x update perceptron weights*/
-void Perceptron::fit(std::array<int, INPUT_SIZE> x, short int y, short int label){
-    unsigned int i; 
+void Perceptron::fit(short x, short int y, short int label){
+    unsigned int i;
+    std::string binary_x = std::bitset<INPUT_SIZE>(x).to_string(); // to binary
+
     if(!sameSign(y,label) || std::abs(y) < threshold){
         for(i =0; i<INPUT_SIZE; i++){
-            this->weights[i + 1] = (this->weights[i + 1] + label) * x[i];
+            this->weights[i + 1] = (this->weights[i + 1] + label) * binary_x[i];
         }
     }
 }
 
-short Perceptron::predict(std::array<int, INPUT_SIZE> x){
+short Perceptron::predict(short x){
+    std::string binary_x = std::bitset<INPUT_SIZE>(x).to_string(); // to binary
+
     short y = this->weights[0]; //add bias    
     for(short i=0; i< INPUT_SIZE; i++){
-        y += this->weights[i + 1]*x[i];
+        y += this->weights[i + 1]* binary_x[i];
     }
     return y;
 }

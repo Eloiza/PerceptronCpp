@@ -1,6 +1,7 @@
 #include <array>
 #include <cstdlib>
 #include <iostream>
+#include <bitset>
 
 #define INPUT_SIZE 5
 #define WEIGHT_SIZE INPUT_SIZE + 1
@@ -10,13 +11,13 @@
 
 class Perceptron{
     private:
-        std::array<int, INPUT_SIZE + 1> weights;
+        std::array<int, WEIGHT_SIZE> weights = {1};
         double threshold = {1.93*HISTORY_LENGHT + 14};
 
         bool sameSign(short x, short y);
     public:        
-        void fit(std::array<int, INPUT_SIZE> x, short int y, short int label);
-        short int predict(std::array<int, INPUT_SIZE> x);
+        void fit(short x, short int y, short int label);
+        short int predict(short x);
         
         std::array<int, WEIGHT_SIZE> getWeights();
         void printWeights();
