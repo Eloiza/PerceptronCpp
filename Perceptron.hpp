@@ -13,6 +13,7 @@ class Perceptron{
         std::array<int, INPUT_SIZE + 1> weights;
         double threshold = {1.93*HISTORY_LENGHT + 14};
 
+        bool sameSign(short x, short y);
     public:        
         void fit(std::array<int, INPUT_SIZE> x, short int y, short int label);
         short int predict(std::array<int, INPUT_SIZE> x);

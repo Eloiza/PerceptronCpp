@@ -1,9 +1,14 @@
 #include "Perceptron.hpp"
 
+/*Check if two integers have the same sign i.e negative and negative*/
+bool Perceptron::sameSign(short x, short y){
+    return (x >=0) ^ (y< 0);
+} 
+
 /*Given an input x update perceptron weights*/
 void Perceptron::fit(std::array<int, INPUT_SIZE> x, short int y, short int label){
     unsigned int i; 
-    if(y != label || std::abs(y) < threshold){
+    if(!sameSign(y,label) || std::abs(y) < threshold){
         for(i =0; i<INPUT_SIZE; i++){
             this->weights[i] = (this->weights[i + 1] + label) * x[i];
         }
