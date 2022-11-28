@@ -28,7 +28,7 @@ int main(){
     p.printWeights();
 
 
-    std::array<int, INPUT_SIZE> x = {1,1,1,1,0};
+    std::array<int, INPUT_SIZE> x = {1,1,1,1,-1};
     short pred = p.predict(x);
     std::cout << pred <<std::endl;
     return 0;
